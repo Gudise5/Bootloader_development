@@ -1,0 +1,22 @@
+
+
+
+
+
+
+#define APPLICATION_ADDRESS 0x08008000
+
+int main(void)
+{
+
+	while(1)
+	{
+
+	}
+
+}
+
+void SystemInit(void)
+{
+	SCB->VTOR = APPLICATION_ADDRESS:
+}

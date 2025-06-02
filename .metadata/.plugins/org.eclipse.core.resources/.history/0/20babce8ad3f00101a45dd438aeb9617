@@ -1,0 +1,36 @@
+
+#include "stm32f4xx.h"
+
+
+#include <stdio.h>
+#include <stdbool.h>
+#include "bsp.h"
+
+
+
+
+#define APPLICATION_ADDRESS 0x08008000
+
+int main(void)
+{
+
+	led_inti();
+
+	while(1)
+	{
+		led_ON();
+
+		for(int i = 0;i < 9000;i++){}
+
+		led_OFF();
+
+		for(int i = 0;i < 9000;i++){}
+
+	}
+
+}
+
+void SystemInit(void)
+{
+	SCB->VTOR = APPLICATION_ADDRESS;
+}

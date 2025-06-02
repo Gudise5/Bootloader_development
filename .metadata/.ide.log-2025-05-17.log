@@ -1,0 +1,32 @@
+2025-05-18 15:57:12,759 [INFO] WebApp:194 - Connection lost
+2025-05-18 16:14:18,300 [INFO] WebApp:191 - Connection restablished
+2025-05-18 17:08:11,324 [INFO] WebApp:194 - Connection lost
+2025-05-18 17:08:26,117 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:04:05,433 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:04:11,125 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:06:34,866 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:06:39,586 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:07:20,581 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:07:22,133 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:07:23,397 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:07:23,625 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:07:40,981 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:07:45,689 [INFO] WebApp:191 - Connection restablished
+2025-05-18 18:18:25,199 [INFO] WebApp:194 - Connection lost
+2025-05-18 18:18:26,645 [INFO] WebApp:191 - Connection restablished
+2025-05-18 19:07:50,693 [INFO] WebApp:194 - Connection lost
+2025-05-18 19:07:57,106 [INFO] WebApp:191 - Connection restablished
+2025-05-18 22:10:29,315 [INFO] MainUpdater:2872 - connection check result : 10
+2025-05-18 22:10:29,395 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-05-18 22:10:29,398 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-05-18 22:10:29,398 [INFO] FinderPluginLoader:95 - Searching for filters in installed packs
+2025-05-18 22:10:31,026 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-05-18 22:10:31,032 [INFO] DetailPanel:341 - Set advertising image to /Users/gudise/STM32Cube/Repository//en.summit-h1-25-promotion.jpg
+2025-05-18 22:10:35,044 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-05-18 22:10:35,210 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-05-18 22:10:35,210 [INFO] DetailPanel:341 - Set advertising image to /Users/gudise/STM32Cube/Repository//en.summit-h1-25-promotion.jpg
+2025-05-18 22:10:46,926 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-05-18 22:10:48,816 [INFO] ApiDb:448 - Save user favorites file /Users/gudise/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2025-05-18 22:10:48,817 [INFO] ApiDb:452 - User favorites MCUs=[]
+2025-05-18 22:10:48,819 [INFO] ApiDb:448 - Save user favorites file /Users/gudise/.stm32cubeide/favorites.boards.txt: 0 item(s)
+2025-05-18 22:10:48,820 [INFO] ApiDb:452 - User favorites Boards=[]

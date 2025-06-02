@@ -1,0 +1,55 @@
+#include "stm32f4xx.h"
+#include "fpu.h"
+#include "uart.h"
+#include <stdio.h>
+#include "timebase.h"
+#include <stdbool.h>
+#include "bsp.h"
+
+
+/*
+ * modules to implement
+ *
+ * FPU
+ * UART
+ * GPIO(BSP)
+ * Time Base
+ */
+
+static bool status;
+
+int main(void)
+{
+	//FPU enable
+	fpu_enable();
+	//UASRT@ enable
+	//uartDebugInit();
+	uart2_init();
+
+	//timebase
+	timeBase_inti();
+
+	//LED INIT
+	led_inti();
+
+	//Button INIT
+	button_inti();
+
+
+	while(1)
+	{
+		uart2_write_string("Hello from application\r\n");
+
+		status = get_button_state();
+
+		led_ON();
+
+		delay(3);
+
+		led_OFF();
+
+		delay(3);
+
+	}
+
+}
