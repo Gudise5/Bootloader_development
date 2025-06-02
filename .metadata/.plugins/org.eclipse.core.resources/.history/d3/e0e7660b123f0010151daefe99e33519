@@ -1,0 +1,78 @@
+#include "stm32f4xx.h"
+#include "fpu.h"
+#include "uart.h"
+#include <stdio.h>
+#include "timebase.h"
+#include <stdbool.h>
+#include "bsp.h"
+
+
+/*
+ * modules to implement
+ *
+ * FPU
+ * UART
+ * GPIO(BSP)
+ * Time Base
+ */
+
+#define APPLICATION_ADDRESS 0x08008000
+
+
+typedef void (*functionPointer)(void);
+void Jump_To_application(void);
+
+void Jump_To_application()
+{
+	uint32_t application_start_address;
+
+	functionPointer jump_to_app;
+
+	uart2_write_string("Bootloader is started\r\n");
+
+	delay(3);
+
+	application_start_address = *(uint32_t *)(APPLICATION_ADDRESS + 4);
+
+	jump_to_app = (functionPointer) application_start_address;
+
+
+	//initialize main stake pointer
+
+	__set_MSP(*(uint32_t *)(APPLICATION_ADDRESS));
+
+	//jump to application
+
+	jump_to_app();
+
+	while(1)
+	{
+		//wont come
+	}
+
+}
+
+
+int main(void)
+{
+	//FPU enable
+	fpu_enable();
+	//UASRT@ enable
+	//uartDebugInit();
+	uart2_init();
+
+	//timebase
+	timeBase_inti();
+
+	//LED INIT
+	led_inti();
+
+	//Button INIT
+	button_inti();
+
+	while(1)
+	{
+
+	}
+
+}

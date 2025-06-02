@@ -1,0 +1,21 @@
+18:17:52 **** Incremental Build of configuration Debug for project GPIO_Application ****
+make -j11 all 
+arm-none-eabi-size  GPIO_Application.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1300	      0	   1568	   2868	    b34	GPIO_Application.elf
+Finished building: default.size.stdout
+ 
+18:17:58 **** Incremental Build of configuration Debug for project Bare_metal_Bootloader ****
+make -j11 all 
+arm-none-eabi-size  Bare_metal_Bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1384	      0	   1568	   2952	    b88	Bare_metal_Bootloader.elf
+Finished building: default.size.stdout
+ 
+18:18:09 **** Incremental Build of configuration Debug for project GPIO_Application ****
+make -j11 all 
+arm-none-eabi-size  GPIO_Application.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1300	      0	   1568	   2868	    b34	GPIO_Application.elf
+Finished building: default.size.stdout
+ 

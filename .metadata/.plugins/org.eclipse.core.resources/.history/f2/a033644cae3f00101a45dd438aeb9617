@@ -1,0 +1,37 @@
+
+#include "stm32f4xx.h"
+
+
+#include <stdio.h>
+#include <stdbool.h>
+#include "bsp.h"
+#include "uart.h"
+
+
+
+#define APPLICATION_ADDRESS 0x08008000
+
+int main(void)
+{
+
+	led_inti();
+	uart2_init();
+
+	while(1)
+	{
+
+		uart2_write_string("hello from application\r\n");
+		for(int i = 0;i < 9000;i++){}
+
+
+		uart2_write_string("hello from application_1\r\n");
+		for(int i = 0;i < 9000;i++){}
+
+	}
+
+}
+
+void SystemInit(void)
+{
+	SCB->VTOR = APPLICATION_ADDRESS;
+}
