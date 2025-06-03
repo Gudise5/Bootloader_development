@@ -16,30 +16,33 @@
  * Time Base
  */
 
-#define APPLICATION_ADDRESS 0x08008000
+/*Boot_Loader main*/
 
+#define APPLICATION_ADDRESS_ONE 0x08008000
+#define APPLICATION_ADDRESS_TWO 0x08020000
 
 typedef void (*functionPointer)(void);
-void Jump_To_application(void);
+void Jump_To_application(uint32_t appAddress);
 
-void Jump_To_application()
+void Jump_To_application(uint32_t appAddress)
 {
 	uint32_t application_start_address;
 
 	functionPointer jump_to_app;
 
-	uart2_write_string("Welcome to Bootloader\r\n");
+	uart2_write_string("\r\n");
+	uart2_write_string("LOADING APPLICATION\r\n");
 
 	delay(3);
 
-	application_start_address = *(uint32_t *)(APPLICATION_ADDRESS + 4);
+	application_start_address = *(uint32_t *)(appAddress + 4);
 
 	jump_to_app = (functionPointer) application_start_address;
 
-
+	SCB->VTOR = appAddress;
 	//initialize main stake pointer
 
-	__set_MSP(*(uint32_t *)(APPLICATION_ADDRESS));
+	__set_MSP(*(uint32_t *)(appAddress));
 
 	//jump to application
 
@@ -70,11 +73,42 @@ int main(void)
 	//Button INIT
 	button_inti();
 
-	Jump_To_application();
+	//Jump_To_application();
 
-	while(1)
-	{
+	uart2_write_string("Welcome to Boot-Loader\r\n");
 
-	}
+	uart2_write_string("Select Application\r\n");
 
+	uart2_write_string("Press A to start application 1\r\n");
+
+	uart2_write_string("Press B to start application 2\r\n");
+
+		while (1)
+		{
+			char c = uart_rx_char();    // Wait for input
+
+
+			if(c == 'A' || c == 'a')
+			{
+
+				uart2_write_char(c);
+
+				//jump to application 1
+				Jump_To_application(APPLICATION_ADDRESS_ONE);
+			}
+			else if(c == 'B' || c == 'b')
+			{
+				uart2_write_char(c);
+
+				//jump to application 2
+				Jump_To_application(APPLICATION_ADDRESS_TWO);
+
+			}
+			else
+			{
+				uart2_write_string("Invalid Input\r\n");
+				uart2_write_string("Please Press A or B to start application\r\n");
+			}
+
+		}
 }
