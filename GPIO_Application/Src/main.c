@@ -8,6 +8,7 @@
 #include "uart.h"
 #include "timebase.h"
 
+/*Application 1*/
 
 
 #define APPLICATION_ADDRESS 0x08008000
@@ -22,7 +23,7 @@ int main(void)
 	while(1)
 	{
 
-		uart2_write_string("hello from application\r\n");
+		uart2_write_string("hello from application_1\r\n");
 
 		delay(3);
 

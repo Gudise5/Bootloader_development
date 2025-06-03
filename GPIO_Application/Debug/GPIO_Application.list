@@ -137,7 +137,7 @@ int main(void)
 	while(1)
 	{
 
-		uart2_write_string("hello from application\r\n");
+		uart2_write_string("hello from application_1\r\n");
  8008250:	4806      	ldr	r0, [pc, #24]	@ (800826c <main+0x2c>)
  8008252:	f000 f8d1 	bl	80083f8 <uart2_write_string>
 
@@ -152,7 +152,7 @@ int main(void)
 		delay(3);
  8008262:	2003      	movs	r0, #3
  8008264:	f000 f84e 	bl	8008304 <delay>
-		uart2_write_string("hello from application\r\n");
+		uart2_write_string("hello from application_1\r\n");
  8008268:	bf00      	nop
  800826a:	e7f1      	b.n	8008250 <main+0x10>
  800826c:	080084d8 	.word	0x080084d8

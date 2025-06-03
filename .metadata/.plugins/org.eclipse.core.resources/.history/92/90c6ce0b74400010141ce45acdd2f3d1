@@ -1,0 +1,98 @@
+/*
+ * uart.c
+ *
+ *  Created on: May 17, 2025
+ *      Author: gudise
+ */
+
+#include "stm32f4xx.h"
+#include "uart.h"
+
+#define GPIOAEN				(1U<<0)
+#define UART2ENABLE			(1U<<17)
+#define UART2BDRATE			(115200)
+#define STSTEMCLOCK			16000000
+#define AHB1CLOCK			STSTEMCLOCK
+#define USARTCR1TE			(1U<<3)
+#define USARTCR1UE 			(1U<<13)
+#define USARTCR1RE			(1U<<2)
+#define USARTSRTXE			(1U<<7)
+
+
+
+//ring Buffer
+
+
+void uart2_init(void) {
+    // Enable clocks
+	    // 1. Enable clocks
+	    RCC->AHB1ENR |= GPIOAEN;
+	    RCC->APB1ENR |= UART2ENABLE;
+
+	    // 2. Set PA2 and PA3 to Alternate Function mode
+	    GPIOA->MODER &= ~((3U << (2 * 2)) | (3U << (3 * 2))); // Clear bits
+	    GPIOA->MODER |=  ((2U << (2 * 2)) | (2U << (3 * 2))); // Set AF mode
+
+	    // 3. Set AF7 (USART2) for PA2 and PA3
+	    GPIOA->AFR[0] &= ~((0xF << (2 * 4)) | (0xF << (3 * 4)));
+	    GPIOA->AFR[0] |=  ((7 << (2 * 4)) | (7 << (3 * 4)));
+
+
+	    GPIOA->OSPEEDR |= (0x3 << (2 * 2));
+	    GPIOA->PUPDR &= ~(0x3 << (2 * 2));
+
+	    // 3. Setup USART2
+	    USART2->BRR = 16000000 / 115200;   // For 16MHz clock
+
+
+	    USART2->CR1 |= USARTCR1TE;
+	    USART2->CR1 |= USARTCR1UE;
+	    USART2->CR1 |= USARTCR1RE;
+
+}
+
+void uart2_write_char(char ch) {
+    while (!(USART2->SR& USARTSRTXE));
+    USART2->DR = ch;
+}
+
+void uart2_write_string(const char *str) {
+    while (*str) uart2_write_char(*str++);
+}
+
+char uart_rx_char(void) {
+    while (!(USART1->SR & (1 << 5)));  // Wait until RXNE is set
+    return USART1->DR & 0xFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
